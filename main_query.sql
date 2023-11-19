@@ -2,13 +2,12 @@ SELECT
 f.trip_id,
 f.VendorID,
 f.fare_amount,
-f.extra,
-f.mta_tax,
 f.tip_amount,
-f.tolls_amount,
-f.improvement_surcharge,
 f.total_amount,
-
+e.tolls_amount,
+e.improvement_surcharge,.
+e.extra,
+e.mta_tax,
 d.tpep_pickup_datetime,
 d.pick_hour,
 d.pick_day,
@@ -39,3 +38,4 @@ JOIN moonlit-mesh-403706.taxi.rate_code_dim r ON r.rate_code_id=f.rate_code_id
 JOIN moonlit-mesh-403706.taxi.pickup_location_dim pick ON pick.pickup_location_id=f.pickup_location_id
 JOIN moonlit-mesh-403706.taxi.dropoff_location_dim drop ON drop.dropoff_location_id=f.dropoff_location_id
 JOIN moonlit-mesh-403706.taxi.payment_dype_dim pay ON pay.payment_type_id=f.payment_type_id;
+JOIN moonlit-mesh-403706.taxi.extra_fee_dim e ON e.extra_fee_id = f.extra_fee_id
